@@ -12,3 +12,8 @@ The second measure, rate of urbanization, describes the projected average rate o
 
 ![github logo](https://github.com/anishsingh20/Analyzing-Urbanization-of-Countires/blob/master/Plots/World%20map%20of%20Urban%20Population.png)
 
+
+## Barplot
+
+
+![github logo](https://github.com/anishsingh20/Analyzing-Urbanization-of-Countires/blob/master/Plots/Barplot%20of%20Urban%20Population.png)
