@@ -61,4 +61,10 @@ ggplot(aes(x = reorder(Nation,Mean.Urban.Rate) , y = Mean.Urban.Rate),data = urb
 #Loading the World data in a data frame with Latitudes and Longitudes
 world<-map_data("world")
 
+#Creating a new Column in Urban df to merge it with world df 
+urban$region<-urban$Nation
 
+
+#Merging the urban and World Data set
+Urbanworld<-merge(world,urban,by="region",all.x=T)
+Urbanworld$subregion<-NULL
