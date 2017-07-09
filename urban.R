@@ -35,5 +35,21 @@ for(i in 2:4) {
 
 str(urban)
 
+#Changing Names
+
+names(urban)<-make.names(names(urban))
+names(urban)
+
+#making a new data frame ordered with Urbanization Rate
+
+#rate of urbanization, describes the projected average rate of change of 
+#the size of the urban population over the given period of time.
+
+urbanRate<- urban %>% group_by(Nation) %>%
+  summarise(Mean.Urban.Rate = mean(Urbanization.Rate....)) %>%
+  top_n(15)
+
+
+
 
 
