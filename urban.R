@@ -84,6 +84,20 @@ countryname = Urbanworld %>%
   ) 
 
 
+
+#A data frame consisting of top 40 countries with highest Urban Population
+TopUrbanPopulation= Urbanworld %>% 
+  group_by(region) %>%
+  summarise(
+    long = mean(range(long)), 
+    lat = mean(range(lat)), 
+    group = mean(group), 
+    UrbanPop = mean(Urban.Population....)
+  ) %>%
+  arrange(desc(UrbanPop)) %>%
+  top_n(40)
+
+
 #Generating a World Map filled by Percentage of Urban Population
 gg <- ggplot()
 #Adding legend
@@ -96,8 +110,9 @@ gg <- gg + geom_map(data=world, map=world,
 #Adding another layer which fills with Per of Urban Population
 gg <- gg + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urban.Population....), color="white", size=0.25) +
             scale_fill_gradient(name = "Percentage of Urban Population", low = "#D7F6F7", high = "#177B7F", 
-                      guide = "colorbar", na.value="#177B7F", breaks = pretty_breaks(n=6)) +
-  labs(title="Percentage of Urban population in Countries")
+                      guide = "colorbar", na.value="white", breaks = pretty_breaks(n=6)) +
+  labs(title="Percentage of Urban population in Countries",subtitle="White Regions are having NA values") + 
+  geom_text(aes(x = long , y = lat , label = region),data = TopUrbanPopulation,size=3)
 
 
 
@@ -144,4 +159,11 @@ ggplot(aes(x = reorder(region,UrbanRate), y = UrbanRate),data = TopcountryRate) 
   coord_flip() + 
   labs(x = "Country" , y = "Urbanization Rate")
 
-#Oman , Qatar and some Gulf countries have highest Urbanization Rates
+#Oman ,Qatar and some Gulf countries have highest Urbanization Rates
+
+
+
+
+
+
+
