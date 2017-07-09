@@ -105,4 +105,39 @@ gg <- gg + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urban.Po
 
 
 #enerating a World Map filled by Percentage of Urbanization Rate
+#rate of urbanization, describes the projected average rate of change of 
+#the size of the urban population over the given period of time
+#In this data from 2015-2010
+
+#A data frame for adding Names to the Plot
+TopcountryRate= Urbanworld %>% 
+  group_by(region) %>%
+  summarise(
+    long = mean(range(long)), 
+    lat = mean(range(lat)), 
+    group = mean(group), 
+    UrbanRate = mean(Urbanization.Rate....)
+  ) %>%
+  arrange(desc(UrbanRate)) %>%
+  top_n(20)
+
+
+
+gg1<-ggplot()
+
+#Adding world map
+gg1 <- gg1 + geom_map(data=world, map=world, 
+                      aes(map_id=region, x=long, y=lat), fill="white", 
+                      colour="black", size=0.25)
+gg1 <- gg1 + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urbanization.Rate....), color="white", size=0.25) +
+  scale_fill_gradient(name = "Urbanization Rate", low = "#FEA5B1", high = "#CA0E27", 
+                      guide = "colorbar", na.value="white", breaks = pretty_breaks(n=6)) +
+  geom_text(data=TopcountryRate,aes(x = long, y = lat,label=region),size = 3) +
+  labs(title="Urbanization Rate in Countries",subtitle="White areas have NA values")
+
+#Oman has highest Urbanization Rate
+
+
+#barplot of top 20 Countries with highest Urbanization Rate
+
 
