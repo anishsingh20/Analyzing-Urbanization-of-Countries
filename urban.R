@@ -81,18 +81,28 @@ countryname = Urbanworld %>%
     group = mean(group), 
     UrbanPop = mean(Urban.Population....), 
     UrbanRate = mean(Urbanization.Rate....)
-  )
+  ) 
 
 
-#Generating a Map
+#Generating a World Map filled by Percentage of Urban Population
 gg <- ggplot()
-gg<-legend(position="left")
+#Adding legend
 
+#Adding world map
 gg <- gg + geom_map(data=world, map=world, 
       aes(map_id=region, x=long, y=lat), fill="white", 
       colour="black", size=0.25)
-  
+
+#Adding another layer which fills with Per of Urban Population
 gg <- gg + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urban.Population....), color="white", size=0.25) +
-            scale_fill_gradient(name = "Percentage of Urban Population", low = "#FAB8D2", high = "#F91C74", 
-                      guide = "colorbar", na.value="white", breaks = pretty_breaks(n = 5)) + 
-  geom_text(data=countryname, aes(x = long, y = lat, label = region), size=2.5)
+            scale_fill_gradient(name = "Percentage of Urban Population", low = "#D7F6F7", high = "#177B7F", 
+                      guide = "colorbar", na.value="#177B7F", breaks = pretty_breaks(n=6)) +
+  labs(title="Percentage of Urban population in Countries")
+
+
+
+
+
+
+#enerating a World Map filled by Percentage of Urbanization Rate
+
