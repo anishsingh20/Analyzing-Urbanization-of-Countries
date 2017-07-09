@@ -8,6 +8,7 @@ require(dplyr)
 require(ggplot2)
 require(maps)
 require(mapproj)
+require(scales)
 
 
 
@@ -68,3 +69,30 @@ urban$region<-urban$Nation
 #Merging the urban and World Data set
 Urbanworld<-merge(world,urban,by="region",all.x=T)
 Urbanworld$subregion<-NULL
+
+str(Urbanworld)
+
+#A data frame for adding Names to the Plot
+countryname = Urbanworld %>% 
+  group_by(region) %>%
+  summarise(
+    long = mean(range(long)), 
+    lat = mean(range(lat)), 
+    group = mean(group), 
+    UrbanPop = mean(Urban.Population....), 
+    UrbanRate = mean(Urbanization.Rate....)
+  )
+
+
+#Generating a Map
+gg <- ggplot()
+gg<-legend(position="left")
+
+gg <- gg + geom_map(data=world, map=world, 
+      aes(map_id=region, x=long, y=lat), fill="white", 
+      colour="black", size=0.25)
+  
+gg <- gg + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urban.Population....), color="white", size=0.25) +
+            scale_fill_gradient(name = "Percentage of Urban Population", low = "#FAB8D2", high = "#F91C74", 
+                      guide = "colorbar", na.value="white", breaks = pretty_breaks(n = 5)) + 
+  geom_text(data=countryname, aes(x = long, y = lat, label = region), size=2.5)
