@@ -50,6 +50,15 @@ urbanRate<- urban %>% group_by(Nation) %>%
   top_n(15)
 
 
+ggplot(aes(x = reorder(Nation,Mean.Urban.Rate) , y = Mean.Urban.Rate),data = urbanRate) +
+  geom_col(color="black",fill="blue",alpha=0.5) +
+  coord_flip() +
+  labs(x = "Countries" , y = "Mean Urbanization Rate",title="Urbanization Rates of Top 15 Countries")
 
+
+#Now creating a World Map
+
+#Loading the World data in a data frame with Latitudes and Longitudes
+world<-map_data("world")
 
 
