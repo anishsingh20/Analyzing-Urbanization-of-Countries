@@ -139,5 +139,9 @@ gg1 <- gg1 + geom_map(data=Urbanworld, map=world, aes(map_id=region, fill=Urbani
 
 
 #barplot of top 20 Countries with highest Urbanization Rate
+ggplot(aes(x = reorder(region,UrbanRate), y = UrbanRate),data = TopcountryRate) +
+  geom_col(color="black" , fill="#9BDE28" ,alpha = 0.6) + 
+  coord_flip() + 
+  labs(x = "Country" , y = "Urbanization Rate")
 
-
+#Oman , Qatar and some Gulf countries have highest Urbanization Rates
