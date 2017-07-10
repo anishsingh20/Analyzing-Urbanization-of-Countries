@@ -17,3 +17,18 @@ The second measure, rate of urbanization, describes the projected average rate o
 
 
 ![github logo](https://github.com/anishsingh20/Analyzing-Urbanization-of-Countires/blob/master/Plots/Barplot%20of%20Urban%20Population.png)
+
+
+##The Urbanization Rates of different countries
+
+Rate of urbanization, describes the projected average rate of change of the size of the urban population over the given period of time.In this data set the time duration is from 2010 - 2015.
+
+![guthub logo](https://github.com/anishsingh20/Analyzing-Urbanization-of-Countires/blob/master/Plots/World%20Map%20Urban%20Rate.png)
+
+
+
+## Barplot of top 20 countries having highest Urbanization Rates
+
+![github logo](https://github.com/anishsingh20/Analyzing-Urbanization-of-Countires/blob/master/Plots/Barplot%20Urbanization%20Rate.png)
+
+
