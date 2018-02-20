@@ -1,4 +1,4 @@
-# Analyzing-Urbanization-of-Countires
+# Analyzing-Urbanization-of-Countries
 
 The aim of this project is to analyze and plot the Urbanization of countries.
 
