@@ -1,5 +1,7 @@
 # Analyzing-Urbanization-of-Countries
 
+It is a simply data analytics and descriptive analysis project to study the urbanization of countries.
+
 The aim of this project is to analyze and get some insights about the Urbanization of countries and the urbanization rates.
 
 There are two measures of the degree of urbanization of a population. The first, urban population, describes the percentage of the total population living in urban areas, as defined by the country.
