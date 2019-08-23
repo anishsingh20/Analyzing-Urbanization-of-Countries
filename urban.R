@@ -36,7 +36,7 @@ for(i in 2:4) {
 
 str(urban)
 
-#Changing Names
+#Changing Names of the variables
 
 names(urban)<-make.names(names(urban))
 names(urban)
